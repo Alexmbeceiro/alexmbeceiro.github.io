@@ -7,7 +7,22 @@
 
 <title>Álex M. Beceiro</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <style>
+
+:root{
+--bg:#0b1020;
+--bg2:#121a33;
+--card:rgba(255,255,255,.05);
+--border:rgba(255,255,255,.08);
+--text:#ffffff;
+--muted:rgba(255,255,255,.72);
+--accent:#7c8cff;
+--accent2:#3dd9ff;
+--radius:28px;
+}
 
 *{
 margin:0;
@@ -28,12 +43,19 @@ system-ui,
 sans-serif;
 
 background:
-radial-gradient(circle at top left,#4f46e5 0%,transparent 35%),
-radial-gradient(circle at bottom right,#06b6d4 0%,transparent 35%),
-#0b0f19;
+radial-gradient(circle at top left,
+rgba(124,140,255,.18),
+transparent 35%),
 
-color:white;
+radial-gradient(circle at bottom right,
+rgba(61,217,255,.12),
+transparent 35%),
+
+var(--bg);
+
+color:var(--text);
 overflow-x:hidden;
+
 }
 
 #progress{
@@ -43,13 +65,13 @@ top:0;
 left:0;
 
 height:4px;
-width:0%;
+width:0;
 
 background:
 linear-gradient(
 90deg,
-#6366f1,
-#06b6d4
+var(--accent),
+var(--accent2)
 );
 
 z-index:9999;
@@ -73,9 +95,9 @@ padding:1.2rem;
 backdrop-filter:blur(20px);
 
 background:
-rgba(11,15,25,.6);
+rgba(11,16,32,.55);
 
-z-index:1000;
+z-index:999;
 
 }
 
@@ -83,9 +105,11 @@ nav a{
 
 color:white;
 text-decoration:none;
-opacity:.7;
+opacity:.75;
 
 transition:.3s;
+
+font-size:.95rem;
 
 }
 
@@ -101,13 +125,13 @@ min-height:100vh;
 
 scroll-snap-align:start;
 
-padding:
-7rem
-8vw;
-
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
+
+padding:
+8rem
+8vw;
 
 position:relative;
 
@@ -126,6 +150,55 @@ text-align:center;
 
 }
 
+.glow{
+
+position:absolute;
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+filter:blur(120px);
+
+opacity:.25;
+
+animation:float 14s ease infinite;
+
+}
+
+.glow-1{
+
+background:var(--accent);
+
+top:-200px;
+left:-150px;
+
+}
+
+.glow-2{
+
+background:var(--accent2);
+
+bottom:-250px;
+right:-150px;
+
+animation-delay:4s;
+
+}
+
+.hero-label{
+
+letter-spacing:.45rem;
+
+font-size:.85rem;
+
+opacity:.7;
+
+margin-bottom:2rem;
+
+}
+
 .hero h1{
 
 font-size:
@@ -139,52 +212,54 @@ margin:auto;
 
 font-weight:900;
 
-animation:fadeUp 1s ease;
-
 }
 
-.hero p{
+.hero-sub{
 
-font-size:1.4rem;
+font-size:1.3rem;
 
-max-width:800px;
+line-height:1.8;
+
+max-width:850px;
 
 margin:
-2rem auto;
+2rem auto
+0;
 
-opacity:.75;
-
-animation:fadeUp 1.4s ease;
+color:var(--muted);
 
 }
 
-.hero-buttons{
+.buttons{
 
 display:flex;
 justify-content:center;
 gap:1rem;
+
 flex-wrap:wrap;
 
-margin-top:2rem;
+margin-top:3rem;
 
 }
 
 .btn{
 
 padding:
-1rem 2rem;
-
-background:
-linear-gradient(
-90deg,
-#6366f1,
-#06b6d4
-);
+1rem
+2rem;
 
 border-radius:999px;
 
 text-decoration:none;
+
 color:white;
+
+background:
+linear-gradient(
+90deg,
+var(--accent),
+var(--accent2)
+);
 
 transition:.3s;
 
@@ -193,7 +268,7 @@ transition:.3s;
 .btn:hover{
 
 transform:
-translateY(-3px)
+translateY(-4px)
 scale(1.03);
 
 }
@@ -201,14 +276,15 @@ scale(1.03);
 .btn-outline{
 
 padding:
-1rem 2rem;
-
-border:
-1px solid rgba(255,255,255,.25);
+1rem
+2rem;
 
 border-radius:999px;
 
+border:1px solid rgba(255,255,255,.15);
+
 text-decoration:none;
+
 color:white;
 
 }
@@ -228,7 +304,7 @@ animation:bounce 2s infinite;
 .section-title{
 
 font-size:
-clamp(2.5rem,5vw,4rem);
+clamp(2.5rem,6vw,4.5rem);
 
 margin-bottom:2rem;
 
@@ -236,13 +312,13 @@ margin-bottom:2rem;
 
 .section-text{
 
-max-width:900px;
-
 font-size:1.2rem;
 
-opacity:.8;
+line-height:1.9;
 
-line-height:1.8;
+max-width:900px;
+
+color:var(--muted);
 
 }
 
@@ -251,7 +327,7 @@ line-height:1.8;
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(300px,1fr));
+repeat(auto-fit,minmax(280px,1fr));
 
 gap:2rem;
 
@@ -261,56 +337,24 @@ margin-top:3rem;
 
 .card{
 
-min-height:320px;
+background:var(--card);
 
-padding:2rem;
-
-border-radius:30px;
-
-background:
-rgba(255,255,255,.05);
+border:1px solid var(--border);
 
 backdrop-filter:blur(15px);
 
-border:
-1px solid rgba(255,255,255,.08);
+padding:2rem;
+
+border-radius:var(--radius);
 
 transition:.4s;
-
-position:relative;
-
-overflow:hidden;
 
 }
 
 .card:hover{
 
 transform:
-translateY(-10px)
-scale(1.02);
-
-}
-
-.card-image{
-
-height:160px;
-
-border-radius:20px;
-
-margin-bottom:1.5rem;
-
-background:
-linear-gradient(
-135deg,
-#1e293b,
-#334155
-);
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-opacity:.7;
+translateY(-10px);
 
 }
 
@@ -322,18 +366,30 @@ margin-bottom:1rem;
 
 }
 
+.card p{
+
+color:var(--muted);
+
+line-height:1.7;
+
+}
+
 .banner{
 
-width:100%;
+margin-top:3rem;
+
 height:70vh;
 
 border-radius:40px;
 
+border:1px solid var(--border);
+
 background:
+
 linear-gradient(
 135deg,
-#1e293b,
-#334155
+#1a2447,
+#18253f
 );
 
 display:flex;
@@ -342,24 +398,81 @@ align-items:center;
 
 font-size:2rem;
 
-margin-top:3rem;
+color:rgba(255,255,255,.35);
+
+}
+
+.statement{
+
+text-align:center;
+
+max-width:1100px;
+
+margin:auto;
+
+}
+
+.statement p{
+
+font-size:
+clamp(2rem,4vw,4.5rem);
+
+line-height:1.15;
+
+font-weight:700;
+
+}
+
+.timeline{
+
+margin-top:4rem;
+
+display:grid;
+gap:2rem;
+
+}
+
+.timeline-item{
+
+padding:2rem;
+
+border-left:
+3px solid var(--accent);
+
+background:var(--card);
+
+border-radius:0 20px 20px 0;
+
+}
+
+.timeline-item h3{
+
+margin-bottom:1rem;
+
+}
+
+.timeline-item p{
+
+color:var(--muted);
+
+line-height:1.8;
 
 }
 
 .quote{
 
 font-size:
-clamp(2rem,4vw,4rem);
+clamp(2rem,5vw,5rem);
+
+font-weight:800;
+
+line-height:1.15;
 
 max-width:1000px;
 
-line-height:1.2;
-
-font-weight:700;
-
 }
 
-footer{
+.footer{
 
 padding:4rem;
 
@@ -372,7 +485,9 @@ opacity:.5;
 .reveal{
 
 opacity:0;
-transform:translateY(50px);
+
+transform:
+translateY(40px);
 
 transition:1s;
 
@@ -381,21 +496,9 @@ transition:1s;
 .reveal.active{
 
 opacity:1;
-transform:translateY(0);
 
-}
-
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
+transform:
+translateY(0);
 
 }
 
@@ -411,8 +514,56 @@ transform:translateY(10px);
 
 }
 
+@keyframes float{
+
+0%,100%{
+
+transform:
+translateY(0)
+translateX(0);
+
+}
+
+50%{
+
+transform:
+translateY(-40px)
+translateX(40px);
+
+}
+
+}
+
+@media(max-width:900px){
+
+nav{
+
+gap:1rem;
+font-size:.85rem;
+
+overflow-x:auto;
+
+}
+
+section{
+
+padding:
+8rem
+1.5rem;
+
+}
+
+.hero h1{
+
+font-size:4rem;
+
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
 <div id="progress"></div>
@@ -420,39 +571,51 @@ transform:translateY(10px);
 <nav>
 
 <a href="#sobre">Sobre mí</a>
-<a href="#intereses">Intereses</a>
-<a href="#proyectos">Proyectos</a>
+<a href="#principios">Principios</a>
+<a href="#retos">Retos</a>
 <a href="#vision">Visión</a>
-<a href="#contacto">Contacto</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#escritos">Escritos</a>
 
 </nav>
 
 <section>
 
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
 <div class="container hero">
 
+<p class="hero-label">
+ÁLEX M. BECEIRO
+</p>
+
 <h1>
-Construyendo ideas para una sociedad mejor.
+
+Pensar el presente.
+
+Construir el futuro.
+
 </h1>
 
-<p>
+<p class="hero-sub">
 
-Derecho, tecnología, gobernanza y derechos
-fundamentales.
-
-Explorando cómo construir instituciones
-más transparentes, eficientes y humanas.
+Interesado en la justicia,
+las instituciones,
+la participación ciudadana
+y la construcción de una sociedad
+más libre, igualitaria y eficiente.
 
 </p>
 
-<div class="hero-buttons">
+<div class="buttons">
 
-<a href="#proyectos" class="btn">
-Explorar proyectos
+<a href="#vision" class="btn">
+Mi visión
 </a>
 
-<a href="#contacto" class="btn-outline">
-Contacto
+<a href="#proyectos" class="btn-outline">
+Proyectos
 </a>
 
 </div>
@@ -475,14 +638,17 @@ Sobre mí
 
 <p class="section-text">
 
-Aquí podrás contar quién eres,
-qué te mueve y cuál es tu propósito.
+Esta página es un espacio en construcción.
+Un lugar donde compartir ideas,
+proyectos, reflexiones y aprendizajes
+sobre instituciones, justicia,
+participación pública y bienestar social.
 
 </p>
 
 <div class="banner">
 
-Futura fotografía profesional
+Fotografía principal / Banner futuro
 
 </div>
 
@@ -490,60 +656,87 @@ Futura fotografía profesional
 
 </section>
 
-<section id="intereses">
+<section id="principios">
 
 <div class="container reveal">
 
 <h2 class="section-title">
-Áreas de interés
+Principios
 </h2>
 
 <div class="grid">
 
 <div class="card">
-
-<div class="card-image">
-Imagen
-</div>
-
-<h3>Gobernanza</h3>
-
-<p>
-Instituciones, transparencia
-y administración pública.
-</p>
-
+<h3>Libertad</h3>
+<p>Defender los derechos y la dignidad humana.</p>
 </div>
 
 <div class="card">
-
-<div class="card-image">
-Imagen
-</div>
-
-<h3>Derechos</h3>
-
-<p>
-Derechos fundamentales
-y bienestar social.
-</p>
-
+<h3>Igualdad</h3>
+<p>Buscar oportunidades reales para todas las personas.</p>
 </div>
 
 <div class="card">
-
-<div class="card-image">
-Imagen
+<h3>Eficiencia</h3>
+<p>Instituciones capaces de servir al interés general.</p>
 </div>
 
-<h3>Tecnología</h3>
+<div class="card">
+<h3>Sostenibilidad</h3>
+<p>Pensar a largo plazo y construir soluciones duraderas.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="retos">
+
+<div class="container reveal">
+
+<h2 class="section-title">
+Problemas que me preocupan
+</h2>
+
+<div class="grid">
+
+<div class="card"><h3>Corrupción</h3></div>
+
+<div class="card"><h3>Desigualdad</h3></div>
+
+<div class="card"><h3>Exclusión social</h3></div>
+
+<div class="card"><h3>Debilitamiento democrático</h3></div>
+
+<div class="card"><h3>Falta de confianza pública</h3></div>
+
+<div class="card"><h3>Desinformación</h3></div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="vision">
+
+<div class="container reveal">
+
+<div class="statement">
 
 <p>
-Privacidad, IA
-y sociedad digital.
-</p>
 
-</div>
+Las instituciones existen
+para servir a las personas.
+
+La libertad,
+la igualdad
+y el bienestar colectivo
+no son metas incompatibles.
+
+</p>
 
 </div>
 
@@ -559,68 +752,111 @@ y sociedad digital.
 Proyectos
 </h2>
 
-<div class="grid">
+<div class="timeline">
 
-<div class="card">
+<div class="timeline-item">
+
 <h3>Proyecto 01</h3>
-<p>Descripción futura.</p>
-</div>
 
-<div class="card">
-<h3>Proyecto 02</h3>
-<p>Descripción futura.</p>
-</div>
+<p>
 
-<div class="card">
-<h3>Proyecto 03</h3>
-<p>Descripción futura.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="vision">
-
-<div class="container reveal">
-
-<div class="quote">
-
-"Las instituciones importan.
-La tecnología importa.
-Las personas importan."
-
-</div>
-
-</div>
-
-</section>
-
-<section id="contacto">
-
-<div class="container reveal">
-
-<h2 class="section-title">
-Contacto
-</h2>
-
-<p class="section-text">
-
-Próximamente.
+Descripción futura.
 
 </p>
 
 </div>
 
+<div class="timeline-item">
+
+<h3>Proyecto 02</h3>
+
+<p>
+
+Descripción futura.
+
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h3>Proyecto 03</h3>
+
+<p>
+
+Descripción futura.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<footer>
+<section id="escritos">
+
+<div class="container reveal">
+
+<h2 class="section-title">
+Escritos y reflexiones
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>
+¿Qué hace legítimo a un Estado?
+</h3>
+
+</div>
+
+<div class="card">
+
+<h3>
+¿Puede existir una sociedad sin corrupción?
+</h3>
+
+</div>
+
+<div class="card">
+
+<h3>
+¿Cómo deberían diseñarse las instituciones?
+</h3>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="quote">
+
+"No heredamos el futuro.
+
+Lo construimos."
+
+</div>
+
+</div>
+
+</section>
+
+<div class="footer">
 
 © Álex M. Beceiro
 
-</footer>
+</div>
 
 <script>
 
@@ -634,7 +870,7 @@ reveals.forEach(item=>{
 const top =
 item.getBoundingClientRect().top;
 
-if(top < window.innerHeight-100){
+if(top < window.innerHeight - 100){
 
 item.classList.add("active");
 
@@ -664,7 +900,8 @@ const scrolled =
 (winScroll/height)*100;
 
 document.getElementById("progress")
-.style.width=scrolled+"%";
+.style.width =
+scrolled + "%";
 
 });
 
