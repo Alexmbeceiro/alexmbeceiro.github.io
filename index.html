@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,9 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Álex M. Beceiro</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <style>
 
@@ -19,249 +17,656 @@ box-sizing:border-box;
 
 html{
 scroll-behavior:smooth;
+scroll-snap-type:y mandatory;
 }
 
 body{
-font-family: Inter, system-ui, sans-serif;
-background:#0f1117;
+
+font-family:
+Inter,
+system-ui,
+sans-serif;
+
+background:
+radial-gradient(circle at top left,#4f46e5 0%,transparent 35%),
+radial-gradient(circle at bottom right,#06b6d4 0%,transparent 35%),
+#0b0f19;
+
 color:white;
 overflow-x:hidden;
 }
 
-nav{
+#progress{
+
 position:fixed;
 top:0;
 left:0;
+
+height:4px;
+width:0%;
+
+background:
+linear-gradient(
+90deg,
+#6366f1,
+#06b6d4
+);
+
+z-index:9999;
+
+}
+
+nav{
+
+position:fixed;
+top:0;
+left:0;
+
 width:100%;
+
 display:flex;
 justify-content:center;
 gap:2rem;
+
 padding:1.2rem;
-backdrop-filter: blur(15px);
-background:rgba(15,17,23,.65);
+
+backdrop-filter:blur(20px);
+
+background:
+rgba(11,15,25,.6);
+
 z-index:1000;
+
 }
 
 nav a{
+
 color:white;
 text-decoration:none;
-opacity:.8;
+opacity:.7;
+
 transition:.3s;
+
 }
 
 nav a:hover{
+
 opacity:1;
-transform:translateY(-2px);
-}
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:2rem;
-}
-
-.hero h1{
-font-size:clamp(3rem,8vw,6rem);
-margin-bottom:1rem;
-animation:fadeUp 1s ease;
-}
-
-.hero p{
-max-width:700px;
-font-size:1.2rem;
-opacity:.8;
-animation:fadeUp 1.3s ease;
-}
-
-.scroll{
-margin-top:3rem;
-opacity:.6;
-animation:bounce 2s infinite;
 }
 
 section{
-max-width:1100px;
+
+min-height:100vh;
+
+scroll-snap-align:start;
+
+padding:
+7rem
+8vw;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+position:relative;
+
+}
+
+.container{
+
+width:100%;
+max-width:1400px;
+
+}
+
+.hero{
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:
+clamp(4rem,10vw,8rem);
+
+line-height:.95;
+
+max-width:1200px;
+
 margin:auto;
-padding:8rem 2rem;
+
+font-weight:900;
+
+animation:fadeUp 1s ease;
+
+}
+
+.hero p{
+
+font-size:1.4rem;
+
+max-width:800px;
+
+margin:
+2rem auto;
+
+opacity:.75;
+
+animation:fadeUp 1.4s ease;
+
+}
+
+.hero-buttons{
+
+display:flex;
+justify-content:center;
+gap:1rem;
+flex-wrap:wrap;
+
+margin-top:2rem;
+
+}
+
+.btn{
+
+padding:
+1rem 2rem;
+
+background:
+linear-gradient(
+90deg,
+#6366f1,
+#06b6d4
+);
+
+border-radius:999px;
+
+text-decoration:none;
+color:white;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:
+translateY(-3px)
+scale(1.03);
+
+}
+
+.btn-outline{
+
+padding:
+1rem 2rem;
+
+border:
+1px solid rgba(255,255,255,.25);
+
+border-radius:999px;
+
+text-decoration:none;
+color:white;
+
+}
+
+.scroll-indicator{
+
+margin-top:4rem;
+
+font-size:2rem;
+
+opacity:.5;
+
+animation:bounce 2s infinite;
+
 }
 
 .section-title{
-font-size:2.5rem;
+
+font-size:
+clamp(2.5rem,5vw,4rem);
+
 margin-bottom:2rem;
+
+}
+
+.section-text{
+
+max-width:900px;
+
+font-size:1.2rem;
+
+opacity:.8;
+
+line-height:1.8;
+
 }
 
 .grid{
+
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:1.5rem;
+
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:2rem;
+
+margin-top:3rem;
+
 }
 
 .card{
-background:#171b25;
+
+min-height:320px;
+
 padding:2rem;
-border-radius:20px;
-transition:.3s;
+
+border-radius:30px;
+
+background:
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(15px);
+
+border:
+1px solid rgba(255,255,255,.08);
+
+transition:.4s;
+
+position:relative;
+
+overflow:hidden;
+
 }
 
 .card:hover{
-transform:translateY(-8px);
+
+transform:
+translateY(-10px)
+scale(1.02);
+
 }
 
-.reveal{
-opacity:0;
-transform:translateY(50px);
-transition:1s;
+.card-image{
+
+height:160px;
+
+border-radius:20px;
+
+margin-bottom:1.5rem;
+
+background:
+linear-gradient(
+135deg,
+#1e293b,
+#334155
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+opacity:.7;
+
 }
 
-.reveal.active{
-opacity:1;
-transform:translateY(0);
+.card h3{
+
+font-size:1.5rem;
+
+margin-bottom:1rem;
+
+}
+
+.banner{
+
+width:100%;
+height:70vh;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+135deg,
+#1e293b,
+#334155
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:2rem;
+
+margin-top:3rem;
+
+}
+
+.quote{
+
+font-size:
+clamp(2rem,4vw,4rem);
+
+max-width:1000px;
+
+line-height:1.2;
+
+font-weight:700;
+
 }
 
 footer{
-padding:5rem 2rem;
+
+padding:4rem;
+
 text-align:center;
-opacity:.6;
+
+opacity:.5;
+
+}
+
+.reveal{
+
+opacity:0;
+transform:translateY(50px);
+
+transition:1s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+transform:translateY(0);
+
 }
 
 @keyframes fadeUp{
+
 from{
 opacity:0;
 transform:translateY(40px);
 }
+
 to{
 opacity:1;
 transform:translateY(0);
 }
+
 }
 
 @keyframes bounce{
+
 0%,100%{
 transform:translateY(0);
 }
+
 50%{
 transform:translateY(10px);
 }
+
 }
 
 </style>
 </head>
 <body>
 
+<div id="progress"></div>
+
 <nav>
+
 <a href="#sobre">Sobre mí</a>
 <a href="#intereses">Intereses</a>
 <a href="#proyectos">Proyectos</a>
+<a href="#vision">Visión</a>
 <a href="#contacto">Contacto</a>
+
 </nav>
 
-<section class="hero">
+<section>
 
-<h1>Álex M. Beceiro</h1>
+<div class="container hero">
+
+<h1>
+Construyendo ideas para una sociedad mejor.
+</h1>
 
 <p>
-Estudiante de Derecho interesado en gobernanza,
-tecnología, derechos fundamentales y mejora de las
-instituciones públicas.
+
+Derecho, tecnología, gobernanza y derechos
+fundamentales.
+
+Explorando cómo construir instituciones
+más transparentes, eficientes y humanas.
+
 </p>
 
-<div class="scroll">
+<div class="hero-buttons">
+
+<a href="#proyectos" class="btn">
+Explorar proyectos
+</a>
+
+<a href="#contacto" class="btn-outline">
+Contacto
+</a>
+
+</div>
+
+<div class="scroll-indicator">
 ↓
+</div>
+
 </div>
 
 </section>
 
-<section id="sobre" class="reveal">
+<section id="sobre">
 
-<h2 class="section-title">Sobre mí</h2>
+<div class="container reveal">
 
-<p>
-Me interesa comprender cómo funcionan las instituciones,
-cómo afectan a las personas y cómo pueden diseñarse sistemas
-más transparentes, eficientes y orientados al bienestar colectivo.
+<h2 class="section-title">
+Sobre mí
+</h2>
+
+<p class="section-text">
+
+Aquí podrás contar quién eres,
+qué te mueve y cuál es tu propósito.
+
 </p>
+
+<div class="banner">
+
+Futura fotografía profesional
+
+</div>
+
+</div>
 
 </section>
 
-<section id="intereses" class="reveal">
+<section id="intereses">
 
-<h2 class="section-title">Áreas de interés</h2>
+<div class="container reveal">
+
+<h2 class="section-title">
+Áreas de interés
+</h2>
 
 <div class="grid">
 
 <div class="card">
+
+<div class="card-image">
+Imagen
+</div>
+
 <h3>Gobernanza</h3>
-<p>Instituciones, transparencia y administración pública.</p>
+
+<p>
+Instituciones, transparencia
+y administración pública.
+</p>
+
 </div>
 
 <div class="card">
+
+<div class="card-image">
+Imagen
+</div>
+
 <h3>Derechos</h3>
-<p>Derechos fundamentales y bienestar social.</p>
+
+<p>
+Derechos fundamentales
+y bienestar social.
+</p>
+
 </div>
 
 <div class="card">
+
+<div class="card-image">
+Imagen
+</div>
+
 <h3>Tecnología</h3>
-<p>Privacidad, IA y sociedad digital.</p>
+
+<p>
+Privacidad, IA
+y sociedad digital.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="proyectos">
+
+<div class="container reveal">
+
+<h2 class="section-title">
+Proyectos
+</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Proyecto 01</h3>
+<p>Descripción futura.</p>
 </div>
 
 <div class="card">
-<h3>Políticas Públicas</h3>
-<p>Diseño de sistemas orientados al interés general.</p>
+<h3>Proyecto 02</h3>
+<p>Descripción futura.</p>
+</div>
+
+<div class="card">
+<h3>Proyecto 03</h3>
+<p>Descripción futura.</p>
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<section id="proyectos" class="reveal">
+<section id="vision">
 
-<h2 class="section-title">Proyectos</h2>
+<div class="container reveal">
 
-<p>
-Próximamente compartiré iniciativas, artículos,
-reflexiones y proyectos personales.
-</p>
+<div class="quote">
+
+"Las instituciones importan.
+La tecnología importa.
+Las personas importan."
+
+</div>
+
+</div>
 
 </section>
 
-<section id="contacto" class="reveal">
+<section id="contacto">
 
-<h2 class="section-title">Contacto</h2>
+<div class="container reveal">
 
-<p>
-En construcción.
+<h2 class="section-title">
+Contacto
+</h2>
+
+<p class="section-text">
+
+Próximamente.
+
 </p>
+
+</div>
 
 </section>
 
 <footer>
+
 © Álex M. Beceiro
+
 </footer>
 
 <script>
 
-const reveals = document.querySelectorAll(".reveal");
+const reveals =
+document.querySelectorAll(".reveal");
 
 function reveal(){
 
 reveals.forEach(item=>{
 
-const top = item.getBoundingClientRect().top;
+const top =
+item.getBoundingClientRect().top;
 
-if(top < window.innerHeight - 100){
+if(top < window.innerHeight-100){
+
 item.classList.add("active");
+
 }
 
 });
 
 }
 
-window.addEventListener("scroll", reveal);
+window.addEventListener(
+"scroll",
+reveal
+);
+
 reveal();
+
+window.addEventListener("scroll",()=>{
+
+const winScroll =
+document.documentElement.scrollTop;
+
+const height =
+document.documentElement.scrollHeight -
+document.documentElement.clientHeight;
+
+const scrolled =
+(winScroll/height)*100;
+
+document.getElementById("progress")
+.style.width=scrolled+"%";
+
+});
 
 </script>
 
