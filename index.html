@@ -1,3 +1,6 @@
+Guarda este archivo como `index.html`.
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,100 +9,265 @@
 
 <title>Álex M. Beceiro</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <style>
-body {
-    font-family: system-ui, sans-serif;
-    max-width: 900px;
-    margin: auto;
-    padding: 2rem;
-    line-height: 1.7;
-    background: #fafafa;
-    color: #222;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-h1 {
-    font-size: 3rem;
-    margin-bottom: 0.2rem;
+html{
+scroll-behavior:smooth;
 }
 
-.subtitle {
-    color: #666;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+body{
+font-family: Inter, system-ui, sans-serif;
+background:#0f1117;
+color:white;
+overflow-x:hidden;
 }
 
-section {
-    margin-top: 3rem;
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:2rem;
+padding:1.2rem;
+backdrop-filter: blur(15px);
+background:rgba(15,17,23,.65);
+z-index:1000;
 }
 
-.card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+nav a{
+color:white;
+text-decoration:none;
+opacity:.8;
+transition:.3s;
 }
 
-a {
-    text-decoration: none;
+nav a:hover{
+opacity:1;
+transform:translateY(-2px);
 }
 
-footer {
-    margin-top: 5rem;
-    color: #777;
-    font-size: 0.9rem;
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:2rem;
 }
+
+.hero h1{
+font-size:clamp(3rem,8vw,6rem);
+margin-bottom:1rem;
+animation:fadeUp 1s ease;
+}
+
+.hero p{
+max-width:700px;
+font-size:1.2rem;
+opacity:.8;
+animation:fadeUp 1.3s ease;
+}
+
+.scroll{
+margin-top:3rem;
+opacity:.6;
+animation:bounce 2s infinite;
+}
+
+section{
+max-width:1100px;
+margin:auto;
+padding:8rem 2rem;
+}
+
+.section-title{
+font-size:2.5rem;
+margin-bottom:2rem;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:1.5rem;
+}
+
+.card{
+background:#171b25;
+padding:2rem;
+border-radius:20px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.reveal{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+footer{
+padding:5rem 2rem;
+text-align:center;
+opacity:.6;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(10px);
+}
+}
+
 </style>
 </head>
-
 <body>
+
+<nav>
+<a href="#sobre">Sobre mí</a>
+<a href="#intereses">Intereses</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<section class="hero">
 
 <h1>Álex M. Beceiro</h1>
 
-<p class="subtitle">
-Estudiante de Derecho · Voluntario · Interesado en gobernanza, tecnología y políticas públicas
+<p>
+Estudiante de Derecho interesado en gobernanza,
+tecnología, derechos fundamentales y mejora de las
+instituciones públicas.
 </p>
 
-<div class="card">
+<div class="scroll">
+↓
+</div>
+
+</section>
+
+<section id="sobre" class="reveal">
+
+<h2 class="section-title">Sobre mí</h2>
+
 <p>
 Me interesa comprender cómo funcionan las instituciones,
 cómo afectan a las personas y cómo pueden diseñarse sistemas
 más transparentes, eficientes y orientados al bienestar colectivo.
 </p>
+
+</section>
+
+<section id="intereses" class="reveal">
+
+<h2 class="section-title">Áreas de interés</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Gobernanza</h3>
+<p>Instituciones, transparencia y administración pública.</p>
 </div>
 
-<section>
-<h2>Áreas de interés</h2>
+<div class="card">
+<h3>Derechos</h3>
+<p>Derechos fundamentales y bienestar social.</p>
+</div>
 
-<ul>
-<li>Derechos fundamentales</li>
-<li>Gobernanza y administración pública</li>
-<li>Estado del bienestar</li>
-<li>Participación ciudadana</li>
-</ul>
+<div class="card">
+<h3>Tecnología</h3>
+<p>Privacidad, IA y sociedad digital.</p>
+</div>
+
+<div class="card">
+<h3>Políticas Públicas</h3>
+<p>Diseño de sistemas orientados al interés general.</p>
+</div>
+
+</div>
+
 </section>
 
-<section>
-<h2>Actualmente</h2>
+<section id="proyectos" class="reveal">
 
-<ul>
-<li>📚 Estudiando Derecho</li>
-<li>🤝 Participando en iniciativas sociales y voluntariado</li>
-<li>💻 Construyendo una identidad digital propia</li>
-<li>🌍 Explorando ideas sobre instituciones y bienestar social</li>
-</ul>
-</section>
-
-<section>
-<h2>Proyectos</h2>
+<h2 class="section-title">Proyectos</h2>
 
 <p>
-Próximamente compartiré proyectos, artículos y reflexiones.
+Próximamente compartiré iniciativas, artículos,
+reflexiones y proyectos personales.
 </p>
+
+</section>
+
+<section id="contacto" class="reveal">
+
+<h2 class="section-title">Contacto</h2>
+
+<p>
+En construcción.
+</p>
+
 </section>
 
 <footer>
 © Álex M. Beceiro
 </footer>
 
+<script>
+
+const reveals = document.querySelectorAll(".reveal");
+
+function reveal(){
+
+reveals.forEach(item=>{
+
+const top = item.getBoundingClientRect().top;
+
+if(top < window.innerHeight - 100){
+item.classList.add("active");
+}
+
+});
+
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
+
+</script>
+
 </body>
 </html>
+```
